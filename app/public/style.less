@@ -1,0 +1,278 @@
+//variables
+@colorPrincipal: #336D9C;
+
+//Mixins
+.gradiante( @color1, @color2 ){
+	background: -webkit-linear-gradient(@color1, @color2);
+	background: -moz-linear-gradient(@color1, @color2);
+	background: -o-linear-gradient(@color1, @color2);
+	background: linear-gradient(@color1, @color2);
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+	background-image: url('img/bg-azul.png');
+	width: 100%;
+	height: 100%;
+}
+
+#latencia {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	color: #fff;
+	font-size: 10px;
+
+	span {
+		font-style: italic;
+	}
+}
+
+#login-contenedor {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.9);
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	#login {
+		width: 200px;
+		min-height: 100px;
+		border: 1px solid #c0c0c0;
+		border-radius: 7px;
+		background-image: url('img/bg-azul.png');
+		text-align: center;
+		margin: auto;
+		margin-top: 250px;
+
+		input[type="text"] {
+			border: 1px solid #000;
+			outline: none;
+			width: 170px;
+			height: 20px;
+			font-style: italic;
+		}
+
+		p.error {
+			color: red;
+			font-size: 12px;
+			font-style: italic;
+		}
+	}
+}
+
+#contenedor {
+	width: 900px;
+	height: 100%;
+	margin: auto;
+	margin-top: 0px;
+
+	.titulo {
+		text-align: center;
+	}
+}
+
+#minicontenedor {
+	width: 620px;
+	margin: auto;
+	height: 400px;
+
+	#tablero {
+		float: left;
+		width: 396px;
+		height: 396px;
+		border: 2px solid #000;
+
+		.fila {
+			width: 396px;
+			height: 132px;
+
+			.columna {
+				width: 130px;
+				height: 130px;
+				font-size: 30px;
+				float: left;
+				border: 1px solid #c0c0c0;
+				background-color: lighten(@colorPrincipal, 10%);
+				cursor: pointer;
+				font-size: 120px;
+				text-align: center;
+				vertical-align: middle;
+
+				&:hover {
+					background-color: lighten(@colorPrincipal, 15%);
+					border: 1px solid darken(#c0c0c0, 10%);
+				};
+			}
+		}
+	}
+
+	#jugadores {
+		width: 198px;
+		height: 120px;
+		float: left;
+		margin-left: 20px;
+		border: 1px solid #000;
+
+		.estado {
+			width: 198px;
+			height: 39px;
+			border-bottom: 1px solid #000;
+			.gradiante( #c0c0c0, lighten(#c0c0c0, 15%));
+
+			.figura {
+				float: left;
+				width: 44px;
+				height: 31px;
+				text-align: center;
+				padding: 5px 0px 3px 0px;
+				background-color: #c0c0c0;
+				border-right: 1px solid #000;
+				font-size: 28px;
+				font-weight: bold;
+
+				//Cuando se conecta un jugador
+				&.bg-verde {
+					background-color: #7FB321;
+				}
+			}
+
+			.nombre {
+				float: left;
+				width: 146px;
+				height: 29px;
+				padding: 5px 2px 5px 5px;
+				font-size: 13px;
+				
+				//Cuando es el turno del jugador
+				&.turno-verde {
+					.gradiante( #7FB321, #fff);
+				}
+
+			}
+		}
+
+		#unirse {
+			width: 100%;
+			height: 30px;
+			font-size: 20px;
+			padding: 10px 0px 0px 0px;
+			border: none;
+			text-align: center;
+			.gradiante( #c0c0c0, #fff);
+
+			&:hover {
+				.gradiante( #fff, #c0c0c0);
+				font-weight: bold;
+			}
+
+			&.completo:hover {
+				.gradiante( orange, #fff);
+			}
+		}
+	}
+
+
+}
+
+#chat {
+
+	width: 748px;
+	height: 200px;
+	border: 1px solid #000;
+	margin: auto;
+	margin-top: 30px;
+
+	#sala {
+		float: left;
+		width: 600px;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		background-color: #fff;
+
+		.texto {
+			margin: 0;
+			width: 600px;
+			height: 170px;
+			border: none;
+			background-color: darken(#fff, 6%);
+			overflow-y: auto;
+			overflow-x: hidden;
+
+			.frase {
+				@borde: 1px dashed #c0c0c0;
+				display: block;
+				width: 590px;
+				padding: 3px 5px 2px 5px;
+				border-bottom: @borde;
+				font-size: 15px;
+
+				.sistema( @color ) {
+					color: @color;
+					font-size: 13px;
+					font-style: italic;
+				}
+
+				&.rojo {
+					.sistema(red);
+				}
+
+				&.verde {
+					.sistema(green);
+				}
+
+				&.naranja {
+					.sistema(orange);
+				}
+
+				&.azul {
+					.sistema(blue);
+				}
+
+			}
+		}
+
+		textarea {
+			margin: 0;
+			height: 25px;
+			width: 100%;
+			border: none;
+			border-top: 1px solid #000;
+			resize: none;
+			outline: none;
+			font-style: italic;
+		}
+
+	}
+
+	#usuarios {
+		float: left;
+		width: 147px;
+		height: 100%;
+		background-color: lighten(#c0c0c0, 5%);
+		border-left: 1px solid #000;
+		overflow-x: hidden;
+		overflow-y: auto;
+
+		.usuario {
+			display: block;
+			width: 137px;
+			font-size: 12px;
+			border-bottom: 1px dashed #fff;
+			text-align: left;
+			padding: 4px 2px 3px 8px;
+
+		}
+
+	}
+
+}
+
+
+
+
+
+

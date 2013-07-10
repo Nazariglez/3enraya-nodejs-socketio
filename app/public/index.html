@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<title>3 En Raya</title>
+		<link rel="stylesheet/less" type="text/css" href="style.less">
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="js/less-1.3.3.min.js"></script>
+		<script src="js/jquery-1.9.1.min.js"></script>
+		<script src="js/core.js"></script>
+	</head>
+	<body>
+
+		<div id="latencia">Latencia: <span></span> segs.</div>
+
+		<div id="login-contenedor">
+			<div id="login">
+				<h3>¿Cual es tu nombre?</h3>
+				<input type="text" name="nick" placeholder="..." maxlength="20">
+				<p class="error"></p>
+			</div>
+		</div>
+
+		<div id="contenedor">
+
+			<h1 class="titulo">3 En Raya</h1>
+
+			<div id="minicontenedor">
+				<div id="tablero">
+					<div class="fila">
+						<div class="columna"></div>
+						<div class="columna"></div>
+						<div class="columna"></div>
+					</div>
+					<div class="fila">
+						<div class="columna"></div>
+						<div class="columna"></div>
+						<div class="columna"></div>
+					</div>
+					<div class="fila">
+						<div class="columna"></div>
+						<div class="columna"></div>
+						<div class="columna"></div>
+					</div>
+				</div>
+
+				<div id="jugadores">
+					<div class="estado" data-jugador="1">
+						<div class="figura">X</div>
+						<div class="nombre">Esperando jugador...</div>
+					</div>
+					<div class="estado" data-jugador="2">
+						<div class="figura">O</div>
+						<div class="nombre">Esperando jugador...</div>
+					</div>
+					<div id="unirse">
+						Unirme
+					</div>
+				</div>
+			</div>
+
+			<div id="chat">
+				<div id="sala">
+					<div class="texto">
+
+					</div>
+					<textarea placeholder="..."></textarea>
+				</div>
+				<div id="usuarios">
+				</div>
+			</div>
+
+		</div>
+	</body>
+</html>
